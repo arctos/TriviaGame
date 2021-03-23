@@ -7,6 +7,10 @@ namespace TriviaGame.ConsoleApp
     {
         private static async Task Main()
         {
+            // Save the current background and foreground colors.
+            var defaultBackgroundColor = Console.BackgroundColor;
+            var defaultForegroundColor = Console.ForegroundColor;
+            
             Console.WriteLine("Welcome to The Trivia Game");
             Console.WriteLine("");
             Console.WriteLine("Press <enter> to begin...");
@@ -42,7 +46,9 @@ namespace TriviaGame.ConsoleApp
                     // Check answer
                     if (answer == question.CorrectAnswer)
                     {
+                        Console.ForegroundColor = ConsoleColor.Green;
                         Console.WriteLine("Congratulations! You win!");
+                        Console.ForegroundColor = defaultForegroundColor;
                         break;
                     }
                     else
