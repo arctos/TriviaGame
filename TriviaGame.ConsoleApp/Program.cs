@@ -40,7 +40,7 @@ namespace TriviaGame.ConsoleApp
                     guesses++;
 
                     // Check answer
-                   if (answer == question.CorrectAnswer)
+                    if (answer == question.CorrectAnswer)
                     {
                         Console.WriteLine("Congratulations! You win!");
                         break;
@@ -63,8 +63,7 @@ namespace TriviaGame.ConsoleApp
                 Console.WriteLine("Thanks for playing The Trivia Game!");
                 Console.WriteLine("Play again? (y/N)");
                 exit = Console.ReadLine();
-            }
-            while (exit == "y" || exit == "Y");
+            } while (exit == "y" || exit == "Y");
         }
     }
 }
