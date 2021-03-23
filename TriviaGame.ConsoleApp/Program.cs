@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Threading.Tasks;
 
 namespace TriviaGame.ConsoleApp
@@ -7,6 +7,9 @@ namespace TriviaGame.ConsoleApp
     {
         private static async Task Main()
         {
+            // Save the current background and foreground colors.
+            var defaultForegroundColor = Console.ForegroundColor;
+            
             Console.WriteLine("Welcome to The Trivia Game");
             Console.WriteLine("");
             Console.WriteLine("Press <enter> to begin...");
@@ -42,13 +45,17 @@ namespace TriviaGame.ConsoleApp
                     // Check answer
                     if (answer == question.CorrectAnswer)
                     {
+                        Console.ForegroundColor = ConsoleColor.Green;
                         Console.WriteLine("Congratulations! You win!");
+                        Console.ForegroundColor = defaultForegroundColor;
                         break;
                     }
                     else
                     {
                         int remainingGuesses = maxGuesses - guesses;
+                        Console.ForegroundColor = ConsoleColor.Blue;
                         Console.WriteLine("Oh, I'm sorry... that's incorrect. You have " + remainingGuesses + " guesses remaining." );
+                        Console.ForegroundColor = defaultForegroundColor;
                         if (remainingGuesses == 0)
                         {
                             Console.WriteLine(" The answer we were looking for was: ");
