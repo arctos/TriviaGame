@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Threading.Tasks;
 
 namespace TriviaGame.ConsoleApp
@@ -54,7 +54,9 @@ namespace TriviaGame.ConsoleApp
                     else
                     {
                         int remainingGuesses = maxGuesses - guesses;
+                        Console.ForegroundColor = ConsoleColor.Blue;
                         Console.WriteLine("Oh, I'm sorry... that's incorrect. You have " + remainingGuesses + " guesses remaining." );
+                        Console.ForegroundColor = defaultForegroundColor;
                         if (remainingGuesses == 0)
                         {
                             Console.WriteLine(" The answer we were looking for was: ");
