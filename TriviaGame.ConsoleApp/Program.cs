@@ -8,7 +8,6 @@ namespace TriviaGame.ConsoleApp
         private static async Task Main()
         {
             // Save the current background and foreground colors.
-            var defaultBackgroundColor = Console.BackgroundColor;
             var defaultForegroundColor = Console.ForegroundColor;
             
             Console.WriteLine("Welcome to The Trivia Game");
