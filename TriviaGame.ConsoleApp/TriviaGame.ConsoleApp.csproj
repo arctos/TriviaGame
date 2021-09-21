@@ -5,5 +5,5 @@
     <TargetFramework>netcoreapp3.1</TargetFramework>
     <RootNamespace>TriviaGame.ConsoleApp</RootNamespace>
   </PropertyGroup>
-
+  <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
 </Project>
