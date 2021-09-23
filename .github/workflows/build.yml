@@ -39,5 +39,5 @@ jobs:
       - name: Nuget
         run: dotnet nuget add source --username Timothy-Wang-Arctos --password ${{ secrets.GITHUB_TOKEN }} --store-password-in-clear-text --name github "https://nuget.pkg.github.com/OWNER/index.json"
       - name: Publish
-        run: dotnet nuget push "bin/Release/Triviagame.1.0.0.nupkg" --source "github"
+        run: dotnet nuget push "bin/Release/TriviaGame.ConsoleApp.1.0.0.nupkg" --source "github"
         
