@@ -5,5 +5,6 @@
     <TargetFramework>netcoreapp3.1</TargetFramework>
     <RootNamespace>TriviaGame.ConsoleApp</RootNamespace>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
-  </PropertyGroup>
+    <RepositoryUrl>https://github.com/arctos/TriviaGame</RepositoryUrl>
+   </PropertyGroup>
  </Project>
