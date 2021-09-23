@@ -41,4 +41,4 @@ jobs:
       - name: Pack
         run: dotnet pack --configuration Release
       - name: Publish
-        run: dotnet nuget push "bin/Release/*.nupkg" --source "github"
+        run: dotnet nuget push "D:\a\TriviaGame\TriviaGame\TriviaGame.ConsoleApp\bin\Release\*.nupkg" --source "github"
