@@ -41,4 +41,4 @@ jobs:
       - name: Pack
         run: dotnet pack --configuration Release
       - name: Publish
-        run: dotnet nuget push **/*.nupkg --source github
+        run: dotnet nuget push **/*.nupkg --source "github"
