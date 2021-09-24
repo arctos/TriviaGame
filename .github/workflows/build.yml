@@ -37,4 +37,5 @@ jobs:
         run: dotnet build --configuration Release --no-restore --version-suffix prerelease-$(date +%Y%m%d%H%M%S)
       - name: Test
         run: dotnet test --no-build --verbosity normal
-
+      - name: Pack
+        run: dotnet pack --configuration Release
