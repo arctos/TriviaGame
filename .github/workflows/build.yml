@@ -26,19 +26,20 @@ jobs:
         uses: actions/setup-dotnet@v1
         with:
           dotnet-version: 3.1.x
+          source-url: https://nuget.pkg.github.com/${{ github.repository_owner }}/index.json
+        env:
+          NUGET_AUTH_TOKEN: '%NUGET_AUTH_TOKEN%'
       - name: Setup NuGet
         uses: NuGet/setup-nuget@v1.0.5
       - name: Restore dependencies
-        run: dotnet restore
-      - name: Restore dependencies
-        run: nuget restore $SOLUTION
+        run: dotnet restore; nuget restore $SOLUTION
       - name: Build
         run: dotnet build --configuration Release --no-restore --version-suffix prerelease-$(date +%Y%m%d%H%M%S)
       - name: Test
         run: dotnet test --no-build --verbosity normal
-      - name: Nuget
-        run: dotnet nuget add source --username Timothy-Wang-Arctos --password ${{ secrets.GITHUB_TOKEN }} --store-password-in-clear-text --name github "https://nuget.pkg.github.com/OWNER/index.json"
       - name: Pack
         run: dotnet pack --configuration Release
       - name: Publish
-        run: dotnet nuget push **/*.nupkg --source "github"
+        run: dotnet nuget push *.nupkg --no-symbols --skip-duplicate
+        env:
+         NUGET_AUTH_TOKEN: ${{ github.token }}
