@@ -18,7 +18,7 @@ jobs:
     runs-on: ${{ matrix.os }}
     strategy:
       matrix:
-        os: [ubuntu-latest, windows-latest]
+        os: [windows-latest]
 
     steps:
       - uses: actions/checkout@v2
@@ -26,9 +26,17 @@ jobs:
         uses: actions/setup-dotnet@v1
         with:
           dotnet-version: 3.1.x
+      - name: Setup NuGet
+        uses: NuGet/setup-nuget@v1.0.5
       - name: Restore dependencies
-        run: dotnet restore
+        run: dotnet restore; 
       - name: Build
-        run: dotnet build --configuration Release --no-restore
+        run: dotnet build --configuration Release --no-restore --version-suffix prerelease-$(date +%Y%m%d%H%M%S)
       - name: Test
         run: dotnet test --no-build --verbosity normal
+      - name: Pack
+        run: dotnet pack --configuration Release --version-suffix prerelease-$(date +%Y%m%d%H%M%S)
+      - name: Add private GitHub registry to NuGet
+        run: nuget sources add -name "Github" -Source https://nuget.pkg.github.com/arctos/index.json -Username Timothy-Wang-Arctos -Password ${{ secrets.GITHUB_TOKEN }}
+      - name: Push generated package to GitHub registry
+        run: nuget push .\*\*\*\*.nupkg -Source "Github" -SkipDuplicate
