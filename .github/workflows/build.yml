@@ -37,6 +37,6 @@ jobs:
       - name: Pack
         run: dotnet pack --configuration Release --version-suffix prerelease-$(date +%Y%m%d%H%M%S)
       - name: Add private GitHub registry to NuGet
-        run: nuget sources add -name "Github" -Source https://nuget.pkg.github.com/arctos/index.json -Username Timothy-Wang-Arctos -Password ${{ secrets.NUGET_GA}}
+        run: nuget sources add -name "Github" -Source https://nuget.pkg.github.com/arctos/index.json -Username Timothy-Wang-Arctos -Password ${{ secrets.GITHUB_TOKEN }}
       - name: Push generated package to GitHub registry
         run: nuget push .\*\*\*\*.nupkg -Source "Github" -SkipDuplicate
