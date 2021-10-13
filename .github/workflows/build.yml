@@ -35,8 +35,8 @@ jobs:
       - name: Test
         run: dotnet test --no-build --verbosity normal
       - name: Pack
-        run: dotnet pack --configuration Release
+        run: dotnet pack --configuration Release --version-suffix prerelease-$(date +%Y%m%d%H%M%S)
       - name: Add private GitHub registry to NuGet
-        run: nuget sources add -name "Github" -Source https://nuget.pkg.github.com/arctos/index.json -Password ${{ secrets.GITHUB_TOKEN }}
+        run: nuget sources add -name "Github" -Source https://nuget.pkg.github.com/arctos/index.json -Username Timothy-Wang-Arctos -Password ${{ secrets.NUGET_GA}}
       - name: Push generated package to GitHub registry
         run: nuget push .\*\*\*\*.nupkg -Source "Github" -SkipDuplicate
